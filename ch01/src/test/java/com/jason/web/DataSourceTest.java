@@ -1,25 +1,24 @@
 package com.jason.web;
 
+import com.jason.mapper.MemberMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-import static org.junit.Assert.assertEquals;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @Slf4j
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class DataSourceTest {
+
+    @Autowired
+    private MemberMapper memberMapper;
 
     @Test
     public void logTest() {
-        String test = "test";
-        log.debug(test);
 
-        assertEquals("test", test);
-
+        log.debug(memberMapper.getTime());
     }
 }
