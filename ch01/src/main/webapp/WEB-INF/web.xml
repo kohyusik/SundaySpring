@@ -8,7 +8,7 @@
     <!-- ContextLoaderListener가 참조하는 파라미터 정보 => 객체 설정 정보를 담은 파일의 경로 정보 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/config/application-context.xml</param-value>
+        <param-value>/WEB-INF/spring/root-context.xml</param-value>
     </context-param>
 
     <!-- 필터 선언 -->

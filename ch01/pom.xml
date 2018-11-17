@@ -7,6 +7,7 @@
     <groupId>com.jason</groupId>
     <artifactId>ch01</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
 
     <properties>
@@ -14,6 +15,9 @@
         <java-version>1.8</java-version>
         <!--SpringFrameWork -->
         <spring.version>5.1.2.RELEASE</spring.version>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -38,7 +42,10 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
+
+
 
         <!--<dependency>-->
             <!--<groupId>org.apache.tomcat.embed</groupId>-->

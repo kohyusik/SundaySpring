@@ -31,13 +31,7 @@
          예) Accept: application/pdf  ===> PDF를 출력하는 view resolver에 위임한다.
      -->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="mediaTypes">
-            <map>
-                <entry key="atom" value="application/atom+xml"/>
-                <entry key="html" value="text/html"/>
-                <entry key="json" value="application/json"/>
-            </map>
-        </property>
+        <!--<property name="contentNegotiationManager" ref="contentNegotiationManager"/>-->
         <property name="viewResolvers">
             <list>
                 <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
@@ -48,12 +42,12 @@
                 </bean>
             </list>
         </property>
-        <property name="defaultViews">
-            <list>
-                <!-- 페이지 컨트롤러가 리턴하는 객체를 JSON 문자열로 만들어 클라이언트로 보낸다. -->
-                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-            </list>
-        </property>
+        <!--<property name="defaultViews">-->
+            <!--<list>-->
+                <!--&lt;!&ndash; 페이지 컨트롤러가 리턴하는 객체를 JSON 문자열로 만들어 클라이언트로 보낸다. &ndash;&gt;-->
+                <!--<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>-->
+            <!--</list>-->
+        <!--</property>-->
     </bean>
 
     <!-- 멀티파트 데이터를 처리하는 객체 설정하기 -->
