@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <constructor-arg ref="hikariConfig"/>
@@ -16,11 +17,13 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:com/jason/mapper/**/*.xml"/>
+        <!--<property name="mapperLocations" value="classpath:com/jason/mapper/**/*.xml"/>-->
     </bean>
 
-    <bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.jason.mapper"/>
+    <!--<bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="com.jason.mapper"/>-->
         <!--<property name="annotationClass" value="org.springframework.stereotype.Repository"/>-->
-    </bean>
+    <!--</bean>-->
+
+    <mybatis-spring:scan base-package="com.jason.mapper"/>
 </beans>
