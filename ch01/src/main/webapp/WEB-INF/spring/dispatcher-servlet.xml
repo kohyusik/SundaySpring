@@ -12,12 +12,24 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-
-    <!-- 페이지 컨트롤러를 찾아서 생성한다. -->
     <context:component-scan base-package="com.jason"/>
 
-    <!-- @RequestMapping 등의 애노테이션을 처리할 BeanPostProcessor를 등록하라! -->
-    <!--<mvc:annotation-driven/>-->
+
+    <!-- 1. DefaultAnnotationHandlerMapping-->
+    <!-- 2. AnnotationMethodHandlerAdapter-->
+    <!-- 3. ConfigurableWebBindingInitializer-->
+    <!-- 4. 메시지 컨버터-->
+    <!-- 5. <spring:eval>을 위한 컨버전 서비스 노출용 인터셉터-->
+    <!-- 6. validator-->
+    <!-- 7. conversion-service-->
+    <mvc:annotation-driven/>
+    <!--<mvc:annotation-driven>-->
+    <!--<mvc:message-converters>-->
+    <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter"/>-->
+    <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>-->
+    <!--</mvc:message-converters>-->
+    <!--</mvc:annotation-driven>-->
+
 
     <!-- View Resolver 설정하기 -->
     <!--
@@ -42,12 +54,6 @@
                 </bean>
             </list>
         </property>
-        <!--<property name="defaultViews">-->
-            <!--<list>-->
-                <!--&lt;!&ndash; 페이지 컨트롤러가 리턴하는 객체를 JSON 문자열로 만들어 클라이언트로 보낸다. &ndash;&gt;-->
-                <!--<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>-->
-            <!--</list>-->
-        <!--</property>-->
     </bean>
 
     <!-- 멀티파트 데이터를 처리하는 객체 설정하기 -->
