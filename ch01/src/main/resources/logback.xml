@@ -24,7 +24,6 @@
         </layout>
     </appender>
 
-    <!-- TRACE > DEBUG > INFO > WARN > ERROR, 대소문자 구분 안함 -->
     <!--<springProfile name="local">-->
         <!--<root level="DEBUG">-->
             <!--<appender-ref ref="FILE"/>-->
@@ -38,10 +37,11 @@
         <!--</root>-->
     <!--</springProfile>-->
 
-    <logger name="org.springframework" level="debug"/>
-    <logger name="org.hibernate" level="debug"/>
+    <logger name="org.springframework" level="info"/>
+    <logger name="org.hibernate" level="info"/>
 
-    <root level="DEBUG">
+    <!-- TRACE > DEBUG > INFO > WARN > ERROR, 대소문자 구분 안함 -->
+    <root level="info">
         <appender-ref ref="FILE"/>
         <appender-ref ref="STDOUT"/>
     </root>

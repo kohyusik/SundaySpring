@@ -1,6 +1,6 @@
 package com.jason.web;
 
-import com.jason.mapper.MemberMapper;
+import com.jason.web.mapper.MemberMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
