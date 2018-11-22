@@ -105,7 +105,6 @@ public class SampleController {
         return todo;
     }
 
-
     // model
     @GetMapping("/home")
     public String home(Model model) {
@@ -134,5 +133,15 @@ public class SampleController {
         log.info("page : {}", page);
 
         return "sample/ex04";
+    }
+
+    // json
+    @GetMapping("/json2")
+    public SampleDTO json2(SampleDTO sampleDTO, @ModelAttribute("page") int page) {
+
+        log.info("SampleDTO : {}", sampleDTO);
+        log.info("page : {}", page); // model.addAttribute("page", page);
+
+        return sampleDTO;
     }
 }
