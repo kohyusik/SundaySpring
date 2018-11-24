@@ -3,7 +3,9 @@ package com.jason.sample.controller;
 import com.jason.sample.domain.SampleDTO;
 import com.jason.sample.domain.SampleDTOList;
 import com.jason.sample.domain.TodoDTO;
+import com.jason.sample.service.SampleService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/sample")
 public class SampleController {
+
+    final SampleService sampleService;
+
+    public SampleController(SampleService sampleService) {
+        this.sampleService = sampleService;
+    }
 
     // domain class
     @RequestMapping("/json")
@@ -162,7 +170,8 @@ public class SampleController {
 
     // file upload jsp
     @GetMapping("/exUpload")
-    public void exUpload() {}
+    public void exUpload() {
+    }
 
     // file upload
     @PostMapping("/exUploadPost")
@@ -175,20 +184,30 @@ public class SampleController {
     }
 
     // error
-    @GetMapping
+    @GetMapping("/errorTest")
     @ResponseBody
     public String errorTest() {
 
         String testNull = null;
+        testNull.hashCode();
         try {
 
-//            testNull.hashCode();
+            testNull.hashCode();
 
         } catch (Exception e) {
-            log.error("error : {}", e);
+
+            log.error("error catch : {}", e.getMessage());
         }
 
         return "home";
+    }
+
+    // call service
+    @GetMapping("/service")
+    @ResponseBody
+    public SampleDTO callService() {
+
+        return sampleService.findAll();
     }
 
 }

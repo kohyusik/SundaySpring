@@ -40,6 +40,10 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
         </init-param>
+        <!--<init-param>-->
+            <!--<param-name>throwExceptionIfNoHandlerFound</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -47,5 +51,10 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/WEB-INF/views/sample/error/error_404.jsp</location>-->
+    <!--</error-page>-->
 
 </web-app>

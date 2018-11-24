@@ -12,8 +12,7 @@ public class SampleCommonExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public ModelAndView unknown(Exception e) {
 
-        log.info(e.toString());
-
+        log.info("exception handle : {}", e.toString(), e);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("sample/error/error_common");
         mav.addObject("exception", e);
