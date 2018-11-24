@@ -3,12 +3,18 @@ package com.jason.sample.controller;
 import com.jason.sample.domain.SampleDTO;
 import com.jason.sample.domain.SampleDTOList;
 import com.jason.sample.domain.TodoDTO;
+import com.jason.sample.service.SampleService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +26,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/sample")
 public class SampleController {
+
+    final SampleService sampleService;
+
+    public SampleController(SampleService sampleService) {
+        this.sampleService = sampleService;
+    }
 
     // domain class
     @RequestMapping("/json")
@@ -36,17 +48,6 @@ public class SampleController {
     public String string(String str) {
 
         log.info("String : {}", str);
-
-        String testNull = null;
-
-        try {
-
-            testNull.hashCode();
-
-        } catch (Exception e) {
-            log.error("error : {}", e);
-        }
-
 
         return str;
     }
@@ -156,4 +157,57 @@ public class SampleController {
 
         return sampleDTO;
     }
+
+    // entity
+    @GetMapping("/entity")
+    public ResponseEntity<String> entity() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Test-Header", "test header value");
+        log.info("header : {}", headers);
+
+        return new ResponseEntity<>("test body value", headers, HttpStatus.OK);
+    }
+
+    // file upload jsp
+    @GetMapping("/exUpload")
+    public void exUpload() {
+    }
+
+    // file upload
+    @PostMapping("/exUploadPost")
+    public void exUploadPost(ArrayList<MultipartFile> files) {
+
+        files.forEach(f -> {
+            log.info("file size : {}", f.getSize());
+            log.info("file name : {}", f.getOriginalFilename());
+        });
+    }
+
+    // error
+    @GetMapping("/errorTest")
+    @ResponseBody
+    public String errorTest() {
+
+        String testNull = null;
+        testNull.hashCode();
+        try {
+
+            testNull.hashCode();
+
+        } catch (Exception e) {
+
+            log.error("error catch : {}", e.getMessage());
+        }
+
+        return "home";
+    }
+
+    // call service
+    @GetMapping("/service")
+    @ResponseBody
+    public SampleDTO callService() {
+
+        return sampleService.findAll();
+    }
+
 }
