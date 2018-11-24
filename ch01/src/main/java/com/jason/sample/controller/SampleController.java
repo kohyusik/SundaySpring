@@ -36,6 +36,18 @@ public class SampleController {
     public String string(String str) {
 
         log.info("String : {}", str);
+
+        String testNull = null;
+
+        try {
+
+            testNull.hashCode();
+
+        } catch (Exception e) {
+            log.error("error : {}", e);
+        }
+
+
         return str;
     }
 
