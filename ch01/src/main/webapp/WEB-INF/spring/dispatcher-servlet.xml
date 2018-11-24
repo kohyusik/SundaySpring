@@ -14,7 +14,6 @@
 
     <context:component-scan base-package="com.jason"/>
 
-
     <!-- 1. DefaultAnnotationHandlerMapping-->
     <!-- 2. AnnotationMethodHandlerAdapter-->
     <!-- 3. ConfigurableWebBindingInitializer-->
@@ -43,7 +42,6 @@
          예) Accept: application/pdf  ===> PDF를 출력하는 view resolver에 위임한다.
      -->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <!--<property name="contentNegotiationManager" ref="contentNegotiationManager"/>-->
         <property name="viewResolvers">
             <list>
                 <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
@@ -57,9 +55,9 @@
     </bean>
 
     <!-- 멀티파트 데이터를 처리하는 객체 설정하기 -->
-    <!--<bean id="multipartResolver"-->
-          <!--class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
-        <!--<property name="maxUploadSize" value="10000000"/>-->
-    <!--</bean>-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>
 
 </beans>
