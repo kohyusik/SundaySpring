@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * @author : yusik
  * @date : 2019-01-06
@@ -25,11 +27,25 @@ public class SampleServiceTests {
     private SampleService sampleService;
 
     @Test
-    public void testClass() {
+    public void testClassLoad() {
         log.info("testClass autowired : {}", sampleService);
         log.info("testClass autowired : {}", sampleService.getClass().getName());
 
+    }
+
+    @Test
+    public void testDoAdd() {
+
         int sum = sampleService.doAdd("12", "13");
+        assertEquals(25, sum);
+
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testDoAddError() {
+
+        int sum = sampleService.doAdd("abc", "13");
+
 
     }
 

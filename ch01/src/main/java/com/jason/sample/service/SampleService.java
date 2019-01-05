@@ -1,5 +1,6 @@
 package com.jason.sample.service;
 
+import com.jason.sample.aop.ConvertTarget;
 import com.jason.sample.domain.SampleDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class SampleService {
 
+    @ConvertTarget
     public Integer doAdd(String str1, String str2) {
-        log.info("================= SampleService.doAdd : {} + {}", str1, str2);
+        log.info("+++++++++++++++++ SampleService.doAdd : {} + {}", str1, str2);
         return Integer.parseInt(str1) + Integer.parseInt(str2);
     }
 
