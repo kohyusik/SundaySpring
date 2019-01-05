@@ -37,4 +37,11 @@ public class MemberController {
         return memberService.getTime2();
     }
 
+    @RequestMapping("/insertTest")
+    @ResponseBody
+    public int insertUser() throws Exception {
+        log.debug("MemberController.insertUser()...");
+        return memberService.insertUsers();
+    }
+
 }
