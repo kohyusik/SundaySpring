@@ -18,5 +18,11 @@ public class UtilsTest {
     public void test2() {
         utils.util1();
         utils.util2();
+
+        int l = "고유식".getBytes().length;
+        int l2 = "kys".getBytes().length;
+
+        System.out.println(l);
+        System.out.println(l2);
     }
 }
