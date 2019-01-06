@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
-@ControllerAdvice
+//@ControllerAdvice
 public class SampleCommonExceptionAdvice {
 
-    @ExceptionHandler(Exception.class)
+//    @ExceptionHandler(Exception.class)
     public ModelAndView unknown(Exception e) {
 
         log.info("exception handle : {}", e.toString(), e);

@@ -1,5 +1,6 @@
 package com.jason.web.service;
 
+import com.jason.web.controller.MemberController;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -26,12 +27,15 @@ public class MemberServiceTests {
     @Setter(onMethod_ = @Autowired)
     private MemberService memberService;
 
+    @Setter(onMethod_ = @Autowired)
+    private MemberController memberController;
+
     @Test
     public void insertUser() {
 
         try {
             log.info("truncate : {}", memberService.removeAll());
-            memberService.insertUsers();
+            memberController.insertUser();
         } catch (Exception e) {
             e.printStackTrace();
         }

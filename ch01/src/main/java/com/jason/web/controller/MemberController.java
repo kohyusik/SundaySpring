@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.PostConstruct;
+
 /**
  * @author : kohyusik
  * @version : 1.0
@@ -21,6 +23,11 @@ public class MemberController {
 
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @PostConstruct
+    public void test() {
+        log.info("MemberController created..");
     }
 
     @RequestMapping("/time")
@@ -39,7 +46,7 @@ public class MemberController {
 
     @RequestMapping("/insertTest")
     @ResponseBody
-    public int insertUser() throws Exception {
+    public int insertUser() {
         log.debug("MemberController.insertUser()...");
         return memberService.insertUsers();
     }

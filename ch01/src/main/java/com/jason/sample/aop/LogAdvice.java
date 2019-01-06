@@ -81,4 +81,9 @@ public class LogAdvice {
 
         return returnVal;
     }
+
+    @Before(value = "execution(* com.jason.web.service..*.*(..))")
+    public void beforeWebService() {
+        log.info("================= before web service");
+    }
 }
