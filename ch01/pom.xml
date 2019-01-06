@@ -15,6 +15,7 @@
         <java-version>1.8</java-version>
         <!--SpringFrameWork -->
         <spring.version>5.1.2.RELEASE</spring.version>
+        <aspectj.version>1.9.2</aspectj.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -54,6 +55,25 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- AspectJ -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!--Test-->
         <dependency>
@@ -98,6 +118,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
 

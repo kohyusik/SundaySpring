@@ -16,11 +16,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.naming.Name;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 @Controller
@@ -56,13 +54,13 @@ public class SampleController {
     @RequestMapping("/ex02")
     @ResponseBody
     public String ex02(
-            @RequestParam("name") String name,
-            @RequestParam("age") int age) {
+            String name,
+            Integer age) {
 
         log.info("name : {}", name);
         log.info("age : {}", age);
 
-        return name + " / " + age;
+        return "asfas";
     }
 
     // List collection
@@ -99,13 +97,13 @@ public class SampleController {
         return list.getList();
     }
 
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder) {
-//        log.info("Init Binder!!");
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, false));
-//
-//    }
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        log.info("Init Binder!!");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, false));
+
+    }
 
     // date format
     @GetMapping("/ex03")
@@ -145,7 +143,7 @@ public class SampleController {
         log.info("SampleDTO : {}", sampleDTO);
         log.info("page : {}", page);
 
-        return "sample/ex04";
+        return "redirect:/sample/ex04";
     }
 
     // json
@@ -180,7 +178,12 @@ public class SampleController {
         files.forEach(f -> {
             log.info("file size : {}", f.getSize());
             log.info("file name : {}", f.getOriginalFilename());
+            getName(f.getOriginalFilename(), name -> UUID.randomUUID().toString() + name);
         });
+    }
+
+    public String getName(String name, NameConverter converter) {
+        return converter.convert(name);
     }
 
     // error

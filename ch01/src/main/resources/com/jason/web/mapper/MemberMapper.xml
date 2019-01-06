@@ -10,4 +10,9 @@
         FROM dual
     </select>
 
+    <insert id="insertUser"><![CDATA[
+        INSERT INTO user (id, age, name)
+        VALUES (#{id}, #{age}, #{name})
+    ]]></insert>
+
 </mapper>

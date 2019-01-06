@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.PostConstruct;
+
 /**
  * @author : kohyusik
  * @version : 1.0
@@ -23,6 +25,11 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    @PostConstruct
+    public void test() {
+        log.info("MemberController created..");
+    }
+
     @RequestMapping("/time")
     @ResponseBody
     public String time() {
@@ -35,6 +42,13 @@ public class MemberController {
     public String time2() {
         log.debug("MemberController.time2()...");
         return memberService.getTime2();
+    }
+
+    @RequestMapping("/insertTest")
+    @ResponseBody
+    public int insertUser() {
+        log.debug("MemberController.insertUser()...");
+        return memberService.insertUsers();
     }
 
 }
